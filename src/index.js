@@ -1,14 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-import Root from './components/Root'
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter as Router } from 'react-router-dom'
+import Root from './containers/Root'
+import configureStore from './store/configureStore'
 
-const store = createStore(todoApp)
+const store = configureStore()
 
 render(
-  <Root store={store} />,
+  <Router>
+    <Root store={store} />
+  </Router>,
   document.getElementById('root')
 )
 
