@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import {Route} from 'react-router-dom';
 import App from './App';
+import Login from './Login';
 
-const Rout = ({store}) => {
-    <Provider store={store}>
+const Root = ({store}) => (
+        <Provider store={store}>
         <div>
-            <Route path="/" component={App} />
-            <Route path="/:login/:name"
-             component={App} />
+            {/* <Route path="/" component={App} /> */}
+            <Route path="/" component={Login} />
         </div>
     </Provider>
-}
+)
 Root.propTypes = {
     store: PropTypes.object.isRequired,
-  }
+}
   
-  export default Root
+export default Root
