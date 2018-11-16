@@ -4,13 +4,16 @@ import {Provider} from 'react-redux';
 import {Route} from 'react-router-dom';
 import App from './App';
 import Login from './Login';
-
+import Logup from './Logup';
+import List from './TestList';
 const Root = ({store}) => (
         <Provider store={store}>
         <div>
-            {/* <Route path="/" component={App} /> */}
-            <Route path="/" component={Login} />
-        </div>
+            <Route path="/" exact  component={App} />
+            <Route path="/logup" component={Logup} /> 
+            <Route path="/login" component={Login} />
+            <Route path="/info" component={List} />
+        </div> 
     </Provider>
 )
 Root.propTypes = {

@@ -10,15 +10,15 @@ const NormalLoginForm = ({form,handleSubmit}) => {
   return (
     <Form style={style} onSubmit={handleSubmit} className="login-form">
     <FormItem>
-      {getFieldDecorator('userName', {
-        rules: [{ required: true, message: 'Please input your username!' }],
+      {getFieldDecorator('email', {
+        rules: [{ required: true, message: 'Please input your email!' }],
       })(
-        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="email" />
       )}
     </FormItem>
     <FormItem>
       {getFieldDecorator('password', {
-        rules: [{ required: true, message: 'Please input your Password!' }],
+        rules: [{ required: true, message: 'Please input your Password!' ,type:"email"}],
       })(
         <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
       )}
@@ -35,7 +35,7 @@ const NormalLoginForm = ({form,handleSubmit}) => {
         Log in
       </Button>
       <br />
-      Or <a href="">register now!</a>
+      Or <a href="/logup">register now!</a>
     </FormItem>
   </Form>
 

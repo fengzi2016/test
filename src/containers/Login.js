@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form} from 'antd';
-import LoginForm from '../compoents/Login';
+import LoginForm from '../components/Login';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = (e) => {
