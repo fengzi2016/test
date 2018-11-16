@@ -1,7 +1,6 @@
 .DS_Store
 node_modules/
 server/page.generator.js
-public/
 npm-debug.log# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
