@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style  from './Login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import './Login.css';
 
 const FormItem = Form.Item;
 
 const NormalLoginForm = ({form,handleSubmit}) => {
   const { getFieldDecorator } = form;
   return (
-    <Form style={style} onSubmit={handleSubmit} className="login-form">
+    <Form onSubmit={handleSubmit} className="login-form">
+    <div className="airplane" ></div>
     <FormItem>
       {getFieldDecorator('email', {
         rules: [{ required: true, message: 'Please input your email!' }],
@@ -31,7 +32,7 @@ const NormalLoginForm = ({form,handleSubmit}) => {
         <Checkbox>Remember me</Checkbox>
       )}
       <a className="login-form-forgot" href="">Forgot password</a>
-      <Button type="primary" htmlType="submit" className="login-form-button">
+      <Button type="primary" htmlType="submit" className="login-form-button" href="./info">
         Log in
       </Button>
       <br />
@@ -45,4 +46,5 @@ NormalLoginForm.PropTypes = {
   handleSubmit:PropTypes.func.isRequired,
   form:PropTypes.object.isRequired
 }
+
 export default NormalLoginForm;

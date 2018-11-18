@@ -1,14 +1,14 @@
 // 容器类，数据处理，事件监听，调用ui类
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import App from '../components/App';
 
-class App extends Component {
+class Appn extends Component {
   render() {
     return (
-      <div className="App">
-       欢迎来到<a href="/login">ZWGH</a>在线考试系统
-      </div>
+     <App />
     );
   }
 }
+export default connect()(Appn)
 
-export default App;

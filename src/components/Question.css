@@ -1,0 +1,31 @@
+.questionContainer{
+    /* display: flex;
+    flex-direction: column; */
+    background:url('../img/blue.png');
+    height: 100vh;
+    background-size: cover;
+   
+}
+.quesitonTitle{
+    text-align: center;
+}
+.questionTime{
+    text-align: center;
+    background-color: rgb(181, 238, 224);
+}
+.radioGroupContainer{
+    display: flex;
+    flex-direction: column;
+    
+}
+.radioGroup{
+    display: flex;
+    flex-direction: column;
+
+}
+.submit {
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform: translate(0,-50%);
+}

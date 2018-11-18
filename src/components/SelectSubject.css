@@ -1,0 +1,17 @@
+.selectContainer{
+    background:url('../img/welcome.jpg');
+    height: 100vh;
+    background-size: cover;
+}
+.selectFather{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nextButton{
+    margin-top: 100px;
+    text-align: center;
+}

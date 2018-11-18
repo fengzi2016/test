@@ -1,0 +1,6 @@
+.list{
+    text-align: center;
+    background:url('../img/welcome.jpg');
+    height: 100vh;
+    background-size: cover;
+}
