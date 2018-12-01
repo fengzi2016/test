@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = (e) => {
-    window.location.href = './info'
+    // window.location.href = './info'
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       const {email,password} = values;

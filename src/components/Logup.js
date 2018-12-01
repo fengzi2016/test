@@ -6,7 +6,7 @@ import  './Logup.css';
 
 const FormItem = Form.Item;
 
-const NormalLogupForm = ({form,handleSubmit}) => {
+const NormalLogupForm = ({form,handleSubmit,handleSendCode}) => {
   const { getFieldDecorator } = form;
   const formItemLayout = {
     labelCol: { span: 5 },
@@ -14,6 +14,7 @@ const NormalLogupForm = ({form,handleSubmit}) => {
   };
   return (
     <Form onSubmit={handleSubmit} className="login-form">
+      <h1>用户注册</h1>
       <FormItem>
         {getFieldDecorator('email', {
           rules: [
@@ -39,23 +40,24 @@ const NormalLogupForm = ({form,handleSubmit}) => {
         )}
       </FormItem>
       <FormItem
-        className="code"
+        // className="code"
         {...formItemLayout}
-        label="Code:"
+        labelCol={1}
         >
         {getFieldDecorator('code', {
             rules: [{ required: true, message: 'Please input your code!' }],
         })(
-         <Row type="flex" gutter={24}>
+         <Row type="flex" gutter={24} >
              <Col span={10}>
-            <Input />
+                <Input />
             </Col>
             <Col span={8}>
-            <Button type="primary" htmlType="submit" style={{display:"inline-block"}}>验证码</Button>
+            <Button type="primary" htmlType="submit" style={{display:"inline-block"}} onClick={handleSendCode}>发送验证码</Button>
             </Col>
         </Row>
         )}
         </FormItem>
+      
       <Button type="primary" htmlType="submit" className="login-form-button">
           Log up
       </Button>

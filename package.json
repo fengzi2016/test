@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dns": "file:./src/mock/dns",
     "antd": "^3.10.7",
     "babel-plugin-import": "^1.11.0",
     "connected-react-router": "^5.0.1",
     "history": "^4.7.2",
+    "nodemailer": "^4.7.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-app-rewired": "^1.6.2",
