@@ -42,10 +42,10 @@ const NormalLogupForm = ({form,handleSubmit,handleSendCode}) => {
       <FormItem
         // className="code"
         {...formItemLayout}
-        labelCol={1}
+        // labelCol={span:1}
         >
-        {getFieldDecorator('code', {
-            rules: [{ required: true, message: 'Please input your code!' }],
+        {getFieldDecorator('activation_code', {
+            // rules: [{ required: true, message: 'Please input your code!' }],
         })(
          <Row type="flex" gutter={24} >
              <Col span={10}>
@@ -65,7 +65,7 @@ const NormalLogupForm = ({form,handleSubmit,handleSendCode}) => {
 
   )
 }
-NormalLogupForm.PropTypes = {
+NormalLogupForm.propTypes = {
   handleSubmit:PropTypes.func.isRequired,
   form:PropTypes.object.isRequired
 }

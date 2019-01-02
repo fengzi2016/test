@@ -3,9 +3,10 @@ import { Table,Button } from 'antd';
 import './TestList.css';
 
 const List = ({data,columns,handleTableChange}) => {
+  const {name}=data;
     return (
       <div className="list">
-      <h2 style={{paddingTop:'200px'}} >张漫的个人中心</h2>
+      <h2 style={{paddingTop:'200px'}} >{name}的个人中心</h2>
       <Table
         style={{marginTop:"50px",padding:"20px"}}
         bordered

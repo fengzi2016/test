@@ -1,8 +1,9 @@
 import React from 'react';
 import {Form} from 'antd';
+import {logup,fetch} from '../actions/actions'; 
 import LogupForm from '../components/Logup';
 import sendCode from '../common/mail';
-
+import {connect} from 'react-redux';
 
 
 class NormalLogupForm extends React.Component {
@@ -35,13 +36,18 @@ class NormalLogupForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-          const {password,email,passwordComfirm} = values;
+          const {password,email,passwordComfirm,activation_code} = values;
+          const name = email;
+          const userType = "学生";
         if(password!==passwordComfirm) {
             alert("确认密码与原密码不同，请重新输入");
         } else {
             // dispatch
-            window.location.href = "/login"
-        }
+            
+            this.props.dispatch(fetch(logup(userType,password,email,name,activation_code)));
+           
+          }
+
         console.log('Received values of form: ', values);
       }
     });
@@ -61,5 +67,8 @@ class NormalLogupForm extends React.Component {
 }
 
 const WrappedNormalLogupForm = Form.create()(NormalLogupForm);
-
-export default WrappedNormalLogupForm;
+export default connect(
+  (user)=>{return {
+    data:user
+  }}
+)(WrappedNormalLogupForm);

@@ -1,5 +1,6 @@
 import React from 'react';
 import List from '../components/TestList';
+import {fetch,fetchTestListAction} from '../actions/actions';
 
 const  data = [{
     key: 0,
@@ -44,7 +45,10 @@ class TestList extends React.Component {
     }],
   };
 
+  componentDidMount(){
 
+    this.props.dispatch(fetch(TestList))
+  }
   handleTableChange = (pagination, filters, sorter) => {
     console.log('params', pagination, filters, sorter);
   }
