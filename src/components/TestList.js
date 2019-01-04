@@ -2,8 +2,8 @@ import React from 'react';
 import { Table,Button } from 'antd';
 import './TestList.css';
 
-const List = ({data,columns,handleTableChange}) => {
-  const {name}=data;
+const List = ({data,name,columns,handleTableChange}) => {
+
     return (
       <div className="list">
       <h2 style={{paddingTop:'200px'}} >{name}的个人中心</h2>
@@ -11,7 +11,7 @@ const List = ({data,columns,handleTableChange}) => {
         style={{marginTop:"50px",padding:"20px"}}
         bordered
         columns={columns}
-        dataSource={data}
+        dataSource={data }
         onChange={handleTableChange}
       />
       <Button type="primary" href="./select"> 开始考试</Button>

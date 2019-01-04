@@ -1,25 +1,10 @@
 import React from 'react';
 import List from '../components/TestList';
-import {fetch,fetchTestListAction} from '../actions/actions';
+import {fetchTestListAction} from '../actions/actions';
+import {connect} from 'react-redux';
+import cookie from '../common/cookie';
 
-const  data = [{
-    key: 0,
-    date: '2018-02-11',
-    scores: 120,
-    subject: 'income',
-  }, {
-    key: 1,
-    date: '2018-03-11',
-    scores: 243,
-    subject: 'income',
-
-  }, {
-    key: 2,
-    date: '2018-04-11',
-    scores: 98,
-    subject: 'income',
-   
-  }];
+const  name = cookie.getCookie('name');
 
 class TestList extends React.Component {
   state = {
@@ -30,9 +15,9 @@ class TestList extends React.Component {
     }, 
     {
         title: '考试时间',
-        dataIndex: 'date',
+        dataIndex: 'start_str',
         width: 200,
-        sorter: (a, b) => new Date(a.date)-new Date(b.date)>0
+       // sorter: (a, b) => new Date(a)-new Date(b.date)>0
     }, 
     {
       title: '科目',
@@ -46,20 +31,28 @@ class TestList extends React.Component {
   };
 
   componentDidMount(){
-
-    this.props.dispatch(fetch(TestList))
+    //const id = cookie.getCookie('id');
+    //this.props.dispatch(fetch(fetchTestListAction(id)))
+    this.props.dispatch(fetchTestListAction("1"));
   }
   handleTableChange = (pagination, filters, sorter) => {
     console.log('params', pagination, filters, sorter);
   }
 
   render() {
+    console.log(this.props.data)
     return (
        
-        <List handleTableChange={this.handleTableChange} columns={this.state.columns} data={data} />
+        <List handleTableChange={this.handleTableChange} columns={this.state.columns} name = {name} data={this.props.data} />
    
     );
   }
 }
 
-export default TestList;
+
+export default connect((store)=>{
+  
+  return {
+    data:store.tests.data
+  }
+})(TestList)

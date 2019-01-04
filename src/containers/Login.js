@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form} from 'antd';
 import LoginForm from '../components/Login';
-import {login, fetch} from '../actions/actions'; 
+import {login} from '../actions/actions'; 
 import {connect} from 'react-redux';
 import Cookie from '../common/cookie';
 
@@ -22,10 +22,7 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       const {email,password} = values;
-      // this.props.dispatch(login(email,password));
-      //this.props.dispatch(fetchUser(email,password));
-      this.props.dispatch(fetch(login(email,password)))
-      
+      this.props.dispatch(login(email,password));
       if (!err) {
         console.log('Received values of form: ', values);
       }

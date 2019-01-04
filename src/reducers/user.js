@@ -1,6 +1,7 @@
 
 
 import {LOGIN_FAILURE,LOGIN_SUCCESS,LOGUP_FAILURE,LOGUP_SUCCESS,LOG_IN,LOG_UP} from '../actions/actions';
+import Cookie from '../common/cookie';
 
 const USER = (state = {isLoading:false}, action) => {
      
@@ -16,22 +17,29 @@ const USER = (state = {isLoading:false}, action) => {
             isLoading:true
           }
           case LOGUP_FAILURE:
-            alert('账户已经注册');
+            alert("已经注册过了");
+            window.location.href='./login';
             return {
               ...state,
               isLoading:false,
           }
          case LOGUP_SUCCESS:
-         console.log('log up ok')
-         window.location.href='./login';
+              console.log(action)
+              var result = action.data
+              var keyArr = Object.keys(result[0]);
+              keyArr.forEach((key)=>{
+                  Cookie.setCookie(key,result[0][key])
+                })
+              window.location.href='./login';
           return {
             ...state,
             isLoading:false,
-            ...action.payload
+          
           }
           case LOGIN_FAILURE:
-         
-            switch(action.payload.status){
+            console.log(action)
+
+            switch(action.err.status){
               case 404:
                console.log("无此账号");
                break;
@@ -45,10 +53,17 @@ const USER = (state = {isLoading:false}, action) => {
               ...state,
               isLoading:false,
             }
+            case LOGIN_SUCCESS:
+          
+            window.location.href='./info';
+             return {
+               ...state,
+               isLoading:false,
+               ...action.data
+             }
             
   
       default:
-            console.log('into')
         return state;
     }
   }

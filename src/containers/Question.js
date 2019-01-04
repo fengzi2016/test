@@ -1,5 +1,6 @@
 import React from 'react';
 import Questions from '../components/Question';
+import { connect } from 'net';
 
 class Question extends React.Component {
     hanleChange = (values) => {
@@ -20,10 +21,13 @@ class Question extends React.Component {
         ];
         const title = "你的考试";
         const time = "43:00";
+        const {questions,time,title} = this.props.data;
         
         return (
             <Questions handleChange={this.hanleChange} questions={questions} title={title} time={time} />
         )
     }
 }
-export default Question;
+export default connect((store)=>{
+   return{data:store.tests}
+})(Question);

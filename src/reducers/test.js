@@ -1,39 +1,49 @@
 
-import {FETCH_TEST_LIST,FETCH_TEST_LIST_SUCCESS,FETCH_TEST_LIST_FAILURE} from '../actions/actions';
+import {FETCH_TEST_LIST,FETCH_TEST_LIST_FAILURE,FETCH_TEST_LIST_SUCCESS,CREATE_A_RECORD,CREATE_A_RECORD_FAILURE,CREATE_A_RECORD_SUCCESS} from '../actions/actions';
 const TEST = (state = {}, action) => {
-     
+     console.log(action.type)
     switch (action.type) {
       case FETCH_TEST_LIST:
         return {
           ...state,
           isLoading:true
         }
-         case FETCH_TEST_LIST_SUCCESS:
-          return {
-            ...state,
-            isLoading:!state.isLoading,
-            ...action.payload
-          }
+      
+      case FETCH_TEST_LIST_SUCCESS:
+          let data = action.data || [];
+           return {
+             ...state,
+             data
+           }
+            
+          
           case FETCH_TEST_LIST_FAILURE:
-         
-            switch(action.payload.status){
-              case 404:
-               console.log("无此账号");
-               break;
-              case 304:
-               console.log("密码错误");
-               break;
-              default: break;
+          
+            return {
+              ...state
             }
 
+            case CREATE_A_RECORD:
             return {
               ...state,
-              isLoading:!state.isLoading,
+              isLoading:true
             }
-            
+            case CREATE_A_RECORD_SUCCESS:
+              
+             return {
+               ...state,
+               isLoading:false,
+               questions:action.data
+            }
+            case CREATE_A_RECORD_FAILURE:
+              console.log(action.err);
+              return {
+                ...state,
+                isLoading:false,
+              }
+
   
       default:
-            console.log('into')
         return state;
     }
   }

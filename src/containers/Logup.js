@@ -1,9 +1,10 @@
 import React from 'react';
 import {Form} from 'antd';
-import {logup,fetch} from '../actions/actions'; 
+import {logup} from '../actions/actions'; 
 import LogupForm from '../components/Logup';
 import sendCode from '../common/mail';
 import {connect} from 'react-redux';
+import cookie from '../common/cookie';
 
 
 class NormalLogupForm extends React.Component {
@@ -42,10 +43,12 @@ class NormalLogupForm extends React.Component {
         if(password!==passwordComfirm) {
             alert("确认密码与原密码不同，请重新输入");
         } else {
-            // dispatch
-            
-            this.props.dispatch(fetch(logup(userType,password,email,name,activation_code)));
-           
+           let keys = Object.keys(values);
+           keys.forEach(key=>{
+             cookie.deleteCookie(key);
+             cookie.setCookie(key,values[key]);
+           })
+           this.props.dispatch(logup(userType,password,email,name,activation_code));
           }
 
         console.log('Received values of form: ', values);
