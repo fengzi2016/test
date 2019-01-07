@@ -92,6 +92,9 @@ const FETCH_TEST_LIST_FAILURE= "FETCH_TEST_LIST_FAILURE";
 const CREATE_A_RECORD = "CREATE_A_RECORD";
 const CREATE_A_RECORD_SUCCESS = "CREATE_A_RECORD_SUCCESS";
 const CREATE_A_RECORD_FAILURE = "CREATE_A_RECORD_FAILURE";
+const COMMIT_A_TEST = "COMMIT_A_TEST";
+const COMMIT_A_TEST_SUCCESS = "COMMIT_A_TEST_SUCCESS";
+const COMMIT_A_TEST_FAILURE = "COMMIT_A_TEST_FAILURE";
 
 export {
     LOG_IN,
@@ -106,9 +109,12 @@ export {
     FETCH_TEST_LIST,
     FETCH_TEST_LIST_SUCCESS,
     FETCH_TEST_LIST_FAILURE,
+    COMMIT_A_TEST,
+    COMMIT_A_TEST_SUCCESS,
+    COMMIT_A_TEST_FAILURE
 }
 
-
+export const commit_a_test = makeActionCreator(COMMIT_A_TEST,'id','answers_id','end_time');
 export const create_a_record = makeActionCreator(CREATE_A_RECORD,'subject_name','user_id','start_time');
 export const create_a_record_successful = makeActionCreator(CREATE_A_RECORD_SUCCESS,'response');
 export const create_a_record_failure = makeActionCreator(CREATE_A_RECORD_FAILURE,'error')

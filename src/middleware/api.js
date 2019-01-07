@@ -10,6 +10,7 @@ function Fetch(url,opt={}) {
     }
 
     opt.body = JSON.stringify(opt.data) || null;
+    console.log(opt.body)
     return fetch(url,opt)
     .then(
         
@@ -61,6 +62,12 @@ let service = {
     },
     createRecord (body){
         return Fetch("http://localhost:8080/ServletDemo/api/TestQuestions?action=0",{
+            method:'POST',
+            data:body
+        })
+    },
+    commitRecord (body){
+        return Fetch("http://localhost:8080/ServletDemo/api/TestRecords?action=3",{
             method:'POST',
             data:body
         })

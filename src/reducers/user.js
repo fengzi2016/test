@@ -14,27 +14,28 @@ const USER = (state = {isLoading:false}, action) => {
         case LOG_UP:
           return {
             ...state,
-            isLoading:true
+            isLoading:true,
+            logup:true
           }
           case LOGUP_FAILURE:
             alert("已经注册过了");
-            window.location.href='./login';
             return {
               ...state,
               isLoading:false,
+              logup:true
           }
          case LOGUP_SUCCESS:
-              console.log(action)
+         
+              
               var result = action.data
               var keyArr = Object.keys(result[0]);
               keyArr.forEach((key)=>{
                   Cookie.setCookie(key,result[0][key])
                 })
-              window.location.href='./login';
           return {
             ...state,
             isLoading:false,
-          
+
           }
           case LOGIN_FAILURE:
             console.log(action)
@@ -54,12 +55,13 @@ const USER = (state = {isLoading:false}, action) => {
               isLoading:false,
             }
             case LOGIN_SUCCESS:
-          
-            window.location.href='./info';
+            
+            const data = action.data[0];
+            if(!data) alert("密码错误")
              return {
                ...state,
                isLoading:false,
-               ...action.data
+               data:data
              }
             
   

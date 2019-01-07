@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import SelectSubject from '../components/SelectSubject';
 import cookie from '../common/cookie';
-import {create_a_record} from '../actions/actions';
+
 
 const options = {
     defaultValue:'java',
@@ -11,20 +13,36 @@ const options = {
 
 
 class SelectSubjects extends React.Component {
-  handleChange = (subject_name) => {
-    // subject_name,user_id,start_time
-     const user_id = cookie.getCookie("id");
-     var time = Date.now();
-     this.props.dispatch(create_a_record(subject_name,user_id,time));
+  state = {
+    subject_name : 'java'
   }
+  handleClick = () => {
+    const {subject_name} = this.state;
+    const user_id = Number(cookie.getCookie("id"));
+    const obj = {
+      subject_name,user_id
+    }
+    
+    for(let key in obj){
+      cookie.setCookie(key,obj[key])
+    }
+    this.props.history.push('./note')
+  }
+  handleChange = (subject_name) => {
+    this.setState({subject_name:subject_name})
+  }
+
   render() {
     return (
      <SelectSubject
        handleChange={this.handleChange}
        options={options}
+       handleClick={this.handleClick}
      />
     );
   }
 }
 
-export default SelectSubjects;
+export default withRouter(connect((store)=>{
+  return {test:store.tests}
+})(SelectSubjects));

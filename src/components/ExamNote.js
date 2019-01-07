@@ -19,12 +19,12 @@ const ExamNote = ({handleClick}) => {
                 3. 按要求诚信考试，不作弊不抄袭。<br />
               
             </div>
-            <Button  onClick={handleClick} className="noteButton" href="./question" >同意并开始考试</Button>
+            <Button onClick={handleClick} className="noteButton" >同意并开始考试</Button>
         </div>
         </div>
     )
 }
-ExamNote.PropTypes = {
+ExamNote.propTypes = {
     handleClick:PropTypes.func.isRequired,
 }
 export default ExamNote;

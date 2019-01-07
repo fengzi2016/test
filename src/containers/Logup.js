@@ -1,5 +1,6 @@
 import React from 'react';
 import {Form} from 'antd';
+import {Redirect,withRouter} from 'react-router-dom';
 import {logup} from '../actions/actions'; 
 import LogupForm from '../components/Logup';
 import sendCode from '../common/mail';
@@ -49,12 +50,18 @@ class NormalLogupForm extends React.Component {
              cookie.setCookie(key,values[key]);
            })
            this.props.dispatch(logup(userType,password,email,name,activation_code));
+          
           }
 
         console.log('Received values of form: ', values);
       }
     });
     
+  }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.data.users.logup){
+     this.props.history.push('/login');
+    }
   }
 
   render() {
@@ -70,8 +77,8 @@ class NormalLogupForm extends React.Component {
 }
 
 const WrappedNormalLogupForm = Form.create()(NormalLogupForm);
-export default connect(
+export default withRouter(connect(
   (user)=>{return {
     data:user
   }}
-)(WrappedNormalLogupForm);
+)(WrappedNormalLogupForm));

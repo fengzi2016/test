@@ -1,5 +1,6 @@
 import React from 'react';
 import {Form} from 'antd';
+import {withRouter} from 'react-router-dom';
 import LoginForm from '../components/Login';
 import {login} from '../actions/actions'; 
 import {connect} from 'react-redux';
@@ -28,7 +29,12 @@ class NormalLoginForm extends React.Component {
       }
     });
   }
-
+  componentWillReceiveProps(nextProps){
+    
+    if(nextProps.users.data){
+     this.props.history.push('./info')
+    }
+  }
   render() {
 
     const {form}= this.props;
@@ -45,4 +51,6 @@ class NormalLoginForm extends React.Component {
 
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
-export default connect()(WrappedNormalLoginForm)
+export default withRouter(connect((store)=>{
+  return {users:store.users}
+})(WrappedNormalLoginForm))

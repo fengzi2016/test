@@ -5,7 +5,7 @@ import './SelectSubject.css';
 
 const Option = Select.Option;
 
-const SelectSubjects = ({handleChange,options}) => {
+const SelectSubjects = ({handleChange,options,handleClick}) => {
     return (
     <div className="selectContainer">
         <a>上一步</a>
@@ -22,14 +22,15 @@ const SelectSubjects = ({handleChange,options}) => {
         </Col>
         </Row>
         <div className="nextButton">
-        <Button  href="./note">下一步</Button>
+        <Button onClick={handleClick}>下一步</Button>
         </div>
     </div>
     )
 }
-SelectSubjects.PropTypes = {
+SelectSubjects.propTypes = {
     handleChange:PropTypes.func.isRequired,
-    options:PropTypes.object.isRequired
+    options:PropTypes.object.isRequired,
+    handleClick:PropTypes.func.isRequired
 }
 export default SelectSubjects;
 

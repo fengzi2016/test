@@ -1,7 +1,7 @@
 .questionContainer{
     /* display: flex;
     flex-direction: column; */
-    background:url('../img/blue.png');
+    background:url('../img/welcome.jpg');
     height: 100vh;
     background-size: cover;
    
@@ -16,16 +16,19 @@
 .radioGroupContainer{
     display: flex;
     flex-direction: column;
-    
+    margin-left: 100px;
 }
 .radioGroup{
     display: flex;
     flex-direction: column;
-
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .submit {
-    position:fixed;
-    bottom:10px;
-    left:50%;
-    transform: translate(0,-50%);
+   text-align: center;
+   width: 100px;
+    
 }

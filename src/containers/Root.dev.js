@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
-import {Route} from 'react-router-dom';
+import {Route,BrowserRouter} from 'react-router-dom';
 import App from './App';
 import Login from './Login';
 import Logup from './Logup';
@@ -13,8 +13,9 @@ import Success from './Successful';
 import Absort from './Absort';
 
 const Root = ({store}) => (
-        <Provider store={store}>
+        <Provider store={store} >
         <div>
+   
             <Route path="/" exact  component={App} />
             <Route path="/logup" component={Logup} /> 
             <Route path="/login" component={Login} />
@@ -24,7 +25,8 @@ const Root = ({store}) => (
             <Route path="/question" component={Question} />
             <Route path="/success" component={Success} />
             <Route path="/absort" component={Absort} />
-        </div> 
+
+        </div>
     </Provider>
 )
 Root.propTypes = {
